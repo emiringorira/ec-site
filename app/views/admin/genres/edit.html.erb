@@ -1,13 +1,7 @@
-<%= form_for(@genres) do |f| %>
-<% if @genres.errors.any? %>
-	<h2><%= @genres.errors.count %>errors prohibited this obj from being saved:</h2>
-    <ul>
-      <% @genres.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-<% end %>
+<%= form_for(@genre, url: admin_genre_path(@genre),method: :patch) do |f| %>
 <h2>ジャンル編集</h2>
 	<b>ジャンル</b>
 			    <%= f.text_field :name, id:"inputtext" %>
-			    <%= f.submit "変更を保存する", class: "user-edit-form" %>
+			    <%= f.submit "変更を保存する" %>
+
+<% end %>
