@@ -1,15 +1,5 @@
 <h2>商品新規登録</h2>
 <%= form_for(@item, url: admin_items_path) do |f| %>
-  <% if @item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @item.errors.count %>件のエラーが発生しました。</h2>
-      <ul>
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-      <% end %>
   <div class="row">
     <div class="col-sm-12">
       <%= f.attachment_field :image %>
@@ -33,8 +23,8 @@
   </div>
   <div class="row">
     <div class="col-sm-6">
-      <%= f.label :genre, 'ジャンル' %>
-      <%= f.select :genre, {'男性': 1, '女性': 2}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+      <%= f.label :ganre, 'ジャンル' %>
+      <%= f.select :ganre_id, Genre.all.map{|o| [o.name, o.id]} %>
     </div>
   </div>
   <div class="row">
@@ -46,12 +36,9 @@
   <div class="row">
     <div class="col-sm-6">
       <%= f.label :is_active, '販売ステータス' %>
-      <%= f.select :is_active, {'販売中': 1, '売切れ': 2}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+      <%= f.select :is_active, Item.is_actives.keys, { class: 'form-control' , required: true } %>
     </div>
   </div>
-
-
-
   <hr>
-  <%= f.submit "新規登録", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+    <%= f.submit "新規登録", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
 <% end %>

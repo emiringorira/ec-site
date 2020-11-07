@@ -2,6 +2,7 @@
 <h2>ジャンル編集</h2>
 	<b>ジャンル</b>
 			    <%= f.text_field :name, id:"inputtext" %>
+			    <%= f.select :is_active, Genre.is_actives.keys, class:"form-control" %>
 			    <%= f.submit "変更を保存する" %>
 
 <% end %>
