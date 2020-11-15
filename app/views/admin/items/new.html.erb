@@ -1,44 +1,25 @@
-<h2>商品新規登録</h2>
 <%= form_for(@item, url: admin_items_path) do |f| %>
-  <div class="row">
-    <div class="col-sm-12">
-      <%= f.attachment_field :image %>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group has-icon">
-        <label class="control-label sr-only">商品名　</label>
-        <%= f.text_field :name, class:"form-control" %>
-        <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
+  <div class="container">
+    <div class="row">
+      <h2>商品新規登録</h2>
+          <div class="col-md-3 col-sm-3 col-xs-12">
+            <%= f.attachment_field :image %>
+          </div>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <label>商品名</label>
+                <%= f.text_field :name, class:"form-control" %>
+                <label>商品説明</label>
+                <%= f.text_area :introduction, class:"form-control" %>
+                <%= f.label :genre, 'ジャンル' %>
+                <%= f.select :genre_id, Genre.all.map{|o| [o.name, o.id]} %>
+                <label>税抜価格</label>
+                <%= f.text_field :price, class:"form-control" %>円<br>
+                <%= f.label :is_active, '販売ステータス' %>
+                <%= f.select :is_active, Item.is_actives.keys, { class: 'form-control' , required: true } %>
+            </div>
+              <div class="col-md-3 col-sm-3 col-xs-12">
+                <%= f.submit "新規登録"%>
+              </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <label class="control-label sr-only">商品説明</label>
-      <%= f.text_area :introduction, class:"form-control" %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <%= f.label :ganre, 'ジャンル' %>
-      <%= f.select :ganre_id, Genre.all.map{|o| [o.name, o.id]} %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <label class="control-label sr-only">税抜価格</label>
-      <%= f.text_field :price, class:"form-control" %>円
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <%= f.label :is_active, '販売ステータス' %>
-      <%= f.select :is_active, Item.is_actives.keys, { class: 'form-control' , required: true } %>
-    </div>
-  </div>
-  <hr>
-    <%= f.submit "新規登録", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
-<% end %>
+  <% end %>

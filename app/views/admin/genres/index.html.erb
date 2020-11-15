@@ -18,13 +18,13 @@
                 </thead>
 
                 <tbody>
-                  <% @genres.each do |g| %>
+                  <% @genres.each do |genre| %>
                     <tr>
                       <td>
-                        <%= g.name %>
+                        <%= genre.name %>
                      </td>
                       <td>
-                        <%= g.is_active %>
+                        <%= genre.is_active %>
                       </td>
                       <td>
                         <%= link_to "編集", edit_admin_genre_path(g.id), class: "btn btn-success btn-sm" %>

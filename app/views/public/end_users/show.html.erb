@@ -1,0 +1,36 @@
+<div class="container">
+	<h2>マイページ</h2>
+	<b>登録情報</b>
+		<%= link_to "編集する", edit_end_user_path(@public.id) %>
+		<%= link_to "パスワードを変更する" %>
+
+		<table class="table table-bordered">
+				<tr>
+					<th class="active" style="width:20%">氏名</th>
+					<td><%= @public.last_name %>　<%= @public.first_name %></td>
+				</tr>
+				<tr>
+					<th class="active" style="width:20%">カナ</th>
+					<td><%= @public.last_name_kana %>　<%= @public.first_name_kana %></td>
+				</tr>
+				<tr>
+					<th class="active" style="width:20%">郵便番号</th>
+					<td><%= @public.postal_code %></td>
+				</tr>
+				<tr>
+					<th class="active" style="width:20%">住所</th>
+					<td><%= @public.address %></td>
+				</tr>
+				<tr>
+					<th class="active" style="width:20%">電話番号</th>
+					<td><%= @public.telephone_number %></td>
+				</tr>
+				<tr>
+					<th class="active" style="width:20%">メールアドレス</th>
+					<td><%= @public.email %></td>
+				</tr>
+		</table>
+		<b>配送先</b><%#= link_to "一覧を見る", path %><br>
+		<b>注文履歴</b><%#= link_to "一覧を見る", path %>
+</div>
+

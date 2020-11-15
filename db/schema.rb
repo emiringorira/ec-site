@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_01_101005) do
+ActiveRecord::Schema.define(version: 2020_11_15_105700) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_101005) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "ganre_id"
+    t.integer "genre_id"
     t.string "name"
     t.string "image_id"
     t.text "introduction"
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_101005) do
     t.string "postal_code"
     t.string "address"
     t.string "telephone_number"
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_publics_on_email", unique: true

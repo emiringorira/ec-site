@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'homes#top'
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   passwords:     'publics/passwords',
   registrations: 'publics/registrations'
 }
+  root 'public/homes#top'
+
   scope module: :public do
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   resources :cart_items, only: [:index, :update, :destroy,:create]

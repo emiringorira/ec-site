@@ -1,0 +1,44 @@
+<h2>商品編集</h2>
+<%= form_for(@item, url: admin_item_path(@item)) do |f| %>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= f.attachment_field :image %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group has-icon">
+        <label class="control-label sr-only">商品名　</label>
+        <%= f.text_field :name, class:"form-control" %>
+        <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <label class="control-label sr-only">商品説明</label>
+      <%= f.text_area :introduction, class:"form-control" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.label :genre, 'ジャンル' %>
+      <%= f.select :genre_id, Genre.all.map{|o| [o.name, o.id]} %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <label class="control-label sr-only">税抜価格</label>
+      <%= f.text_field :price, class:"form-control" %>円
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.label :is_active, '販売ステータス' %>
+      <%= f.select :is_active, Item.is_actives.keys, { class: 'form-control' , required: true } %>
+    </div>
+  </div>
+  <hr>
+    <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+<% end %>
